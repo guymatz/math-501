@@ -66,6 +66,28 @@ BMCC}
 \begin{problem}  \textbf{Death of Dice} \\
 We start with 60 dice in a cup. At the start of each hour we shake the cup and toss the dice onto our desk. All the dice that land with the 6 facing upwards we throw away. The rest of the dice are put back into our cup. We repeat this process at the start of each hour. Model this discrete process as a continuous process, i.e, find the differential equation that best models this process. Solve the differential equation. About how many hours should we expect it to take for us to have only 30 dice left?
 
+\begin{align*}
+\text{Discrete:}\\
+A(n+1) &= \frac{1}{2}A(n) + 24 \\
+   -A(n) &= -A(n) \\
+A(n+1) - A(n) &= -\frac{1}{2}A(n) + 24 \\
+\text{Continuous:}\\
+A(t + \Delta t) - A(t) &= (-\frac{1}{2}A(\Delta t) + 24) \Delta t \\
+\frac{A(t + \Delta t) - A(t)}{A(\Delta t)} &= \frac{(-\frac{1}{2}A(\Delta t) + 24) \Delta t}{\Delta t} \\
+\lim\limits_{\Delta \rightarrow 0} \frac{A(t + \Delta t) - A(t)}{A(\Delta t)} &= \lim\limits_{\Delta \rightarrow 0} \frac{(-\frac{1}{2}A(\Delta t) + 24) \Delta t}{A(\Delta t)} \\
+\text{Differential Equation:}\\
+A'(t) &= -\frac{1}{2} A(t) + 24
+\end{align*}
+
+\begin{align*}
+Solve
+\end{align*}
+
+
+\begin{align*}
+Solve for 30 dice
+\end{align*}
+
 \end{problem}
 
 \begin{problem} \textbf{Mixing Salt Water} \\
