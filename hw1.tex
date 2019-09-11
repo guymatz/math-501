@@ -25,7 +25,7 @@
     %files ***.sty. The package ``homework'' above was created by me. The other packages
     %are very common for this type of document. You can google to learn more about what
     %they can do, and what options they give you. For example
-
+\usepackage{textcomp}
 \usepackage[margin=1.5in]{geometry}
     %the geometry package lets you customize the margins of your document.
     % and the 
@@ -63,35 +63,65 @@ BMCC}
 \vskip .25in %skip a bit before we start the regular text.
 \thispagestyle{empty} %no need to number first page.
 
-\begin{problem}  \textbf{Death of Dice} \\
-We start with 60 dice in a cup. At the start of each hour we shake the cup and toss the dice onto our desk. All the dice that land with the 6 facing upwards we throw away. The rest of the dice are put back into our cup. We repeat this process at the start of each hour. Model this discrete process as a continuous process, i.e, find the differential equation that best models this process. Solve the differential equation. About how many hours should we expect it to take for us to have only 30 dice left?
+\begin{problem}  \textbf{Exponential Growth} \\
+Suppose a small colony of 1,000 bacteria, at t = 0 minutes is in a large bottle of water with lots of food and no predators (so there are no predation or density dependent issues to worry about). Suppose after 45 minutes there are 2,500 bacteria in the colony. Let y(t) = the number of bacteria in the colony at time t, t measured in minutes.
 
+\begin{enumerate}
+\item Write the ODE IVP for the above scenario
+\begin{equation*}
+\frac{dy}{dt} = ky, \, y(0) = 1,000
+\end{equation*}
+\item and find the solution to the IVP.
 \begin{align*}
-\text{Discrete:}\\
-A(n+1) &= \frac{1}{2}A(n) + 24 \\
-   -A(n) &= -A(n) \\
-A(n+1) - A(n) &= -\frac{1}{2}A(n) + 24 \\
-\text{Continuous:}\\
-A(t + \Delta t) - A(t) &= (-\frac{1}{2}A(\Delta t) + 24) \Delta t \\
-\frac{A(t + \Delta t) - A(t)}{A(\Delta t)} &= \frac{(-\frac{1}{2}A(\Delta t) + 24) \Delta t}{\Delta t} \\
-\lim\limits_{\Delta \rightarrow 0} \frac{A(t + \Delta t) - A(t)}{A(\Delta t)} &= \lim\limits_{\Delta \rightarrow 0} \frac{(-\frac{1}{2}A(\Delta t) + 24) \Delta t}{A(\Delta t)} \\
-\text{Differential Equation:}\\
-A'(t) &= -\frac{1}{2} A(t) + 24
+    \frac{dy}{dt} &= ky \\
+    \frac{dy}{y} &= k\, dt \\
+    \int \frac{dy}{dt} &= \int ky \\
+    ln |y| &= kt + c_1 \\
+    |y| &= e^{kt}e^{c_1} \\
+    y &= Ce^{kt}
 \end{align*}
-
+With $y(0) = 1,000$,
 \begin{align*}
-Solve
+y(0) = Ce^{k \cdot 0} = C \\
 \end{align*}
-
-
+and
 \begin{align*}
-Solve for 30 dice
+C = 1,000
 \end{align*}
+so
+\begin{align*}
+y(t) = 1,000 e^{kt}
+\end{align*}
+\item Use the solution to estimate how many bacteria were in the bottle at t = 90 minutes.
+\\
+We first find $k$ at $t = 45$,
+\begin{align*}
+y(t) &= 1,000e^{kt} \\
+\frac{y(t)}{1,000} &= e^{kt} \\
+\text{ln } \frac{y(t)}{1,000} &= kt \\
+\frac{\text{ln } \frac{y(t)}{1,000}}{t} &= k \\
+\frac{\text{ln } \frac{y(45)}{1,000}}{45} &= k \\
+\frac{\text{ln } \frac{2,500}{1,000}}{45} &= k \\
+\frac{\text{ln } 2.5}{45} &= k \\
+\frac{0.91629}{45} &= k \\
+0.02 &= k
+\end{align*}
+Hence,
+\begin{equation*}
+y(t) = 1,000e^{0.02t}
+\end{equation*}
+And so at $t = 90$,
+\begin{align*}
+y(90) &= 1,000 e^{0.02 \cdot 90} \\
+         &= 6049.65
+\end{align*}
+\end{enumerate}
+
 
 \end{problem}
 
-\begin{problem} \textbf{Mixing Salt Water} \\
-We start with 1000 liters of seawater in a tank. In seawater there are 35 g of salt per liter. Suppose we continually pour almost fresh water (2 g salt/liter) into the top of the tank at the rate of 4 liters/minute and at the bottom of the tank, we continually drain off 4 liters/minute. So the amount of water in the tank is always 1000 liters. Assume that the water in the tank is being stirred so that the saltwater and the freshwater mix immediately. How long until the concentration of salt in the tank is 4 g/liter?
+\begin{problem} \textbf{Mixing} \\
+We start with 2,000 liters of seawater in a tank. In seawater there are 35 g of salt per liter. Suppose we continually pour fresh water3 (0.5 g salt/liter) into the top of the tank at the rate of 10 liters/minute and at the bottom of the tank, we continually drain off 10 liters/minute. So the amount of water in the tank is always 2,000 liters. Assume that the water in the tank is being stirred so that the saltwater and the freshwater mix immediately. How long until the concentration of salt in the tank is 6 g/liter? Circle your final answer (how many minutes until the salt concentration is 6 g/L).
 \end{problem}
 
 \end{document}
