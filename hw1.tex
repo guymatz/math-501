@@ -57,9 +57,13 @@ BMCC}
 
 \begin{document} %this means end the preamble (stuff controling the styles above and
 %start the content of the document. We can make adjustments as we go. For example,
-
-%\maketitle
-%\newpage
+\maketitle
+\begin{enumerate}
+\item Number of bacteria after 90 min = 6049.65
+\item Minutes until the salt concentration is 6 g/L = your answer
+\end{enumerate}
+ 
+\newpage
 \vskip .25in %skip a bit before we start the regular text.
 \thispagestyle{empty} %no need to number first page.
 
@@ -86,7 +90,7 @@ y(0) = Ce^{k \cdot 0} = C \\
 \end{align*}
 and
 \begin{align*}
-C = 1,000
+y(0) &= C = 1,000
 \end{align*}
 so
 \begin{align*}
@@ -121,7 +125,61 @@ y(90) &= 1,000 e^{0.02 \cdot 90} \\
 \end{problem}
 
 \begin{problem} \textbf{Mixing} \\
-We start with 2,000 liters of seawater in a tank. In seawater there are 35 g of salt per liter. Suppose we continually pour fresh water3 (0.5 g salt/liter) into the top of the tank at the rate of 10 liters/minute and at the bottom of the tank, we continually drain off 10 liters/minute. So the amount of water in the tank is always 2,000 liters. Assume that the water in the tank is being stirred so that the saltwater and the freshwater mix immediately. How long until the concentration of salt in the tank is 6 g/liter? Circle your final answer (how many minutes until the salt concentration is 6 g/L).
+We start with 2,000 liters of seawater in a tank. In seawater there are 35 g of salt per liter. Suppose we continually pour fresh water (0.5 g salt/liter) into the top of the tank at the rate of 10 liters/minute and at the bottom of the tank, we continually drain off 10 liters/minute. So the amount of water in the tank is always 2,000 liters. Assume that the water in the tank is being stirred so that the saltwater and the freshwater mix immediately. How long until the concentration of salt in the tank is 6 g/liter? Circle your final answer (how many minutes until the salt concentration is 6 g/L).
+\\\\
+Let $b(t) =g$ of salt in the tank at time $t$, $t$ measured in minutes.  The concentration of salt in the tank at time $t$ is:
+\begin{equation*}
+\frac{b(t) g}{2000 L}
+\end{equation*}
+Then
+\begin{align*}
+\frac{db}{dt} &= \frac{.5 \text{g}}{\text{L}} \frac{10 \text{L}}{\text{min}} - \frac{b(t) \text{g}}{2,000 \text{\text{L}}}  \frac{10 L}{\text{min}}\\
+                    &= \frac{5 \text{g}}{\text{min}} - \frac{b(t) \text{g}}{200 \text{ min}}\\
+                    &= 5 - \frac{b}{200}
+\end{align*}
+IVP
+\begin{align*}
+b(0) &= \frac{35 g}{L} \cdot 2000 L \\
+       &= 70,000g
+\end{align*}
+And
+\begin{align*}
+\frac{db}{dt} &= 5 - \frac{b}{200} \\
+\frac{db}{5 - \frac{b}{200}} &= dt \\
+\int \frac{db}{5 - \frac{b}{200}} &= \int dt \\
+\frac{\text{ln} |5 - \frac{b}{200}| }{-\frac{1}{200}} &= t + c_1 \\
+ln| 5 - \frac{b}{200}| &= \frac{t}{-200} + c_2 \\
+e^{ln| 5 - \frac{b}{200}|} &= e^{\frac{t}{-200} + c_2 } \\
+| 5 - \frac{b}{200}| &= e^{c_2}e^\frac{t}{-200}  \\ 
+5 - \frac{b}{200} &= c_3 e^\frac{-t}{200}  \\
+b &= c_4 e^{\frac{-t}{200}} + 1000
+\end{align*}
+General Solution
+\begin{equation*}
+b = c_4 e^{\frac{-t}{200}} + 1000
+\end{equation*}
+And
+\begin{align*}
+b(0) &= 70,000 \\
+        &= c_4 e^0 + 1000 \\
+        &= 69,000\\
+        &= c_4
+\end{align*}
+Particular Solution
+\begin{equation*}
+b(t) = 69,000 e^{\frac{-t}{200}} + 1,000
+\end{equation*}
+When concentration is 6 g/L, 
+\begin{align*}
+\frac{b(t)}{2000} &= 6g/L\\
+b(t) &= 12000 \\
+12000 &= 69000e^{\frac{-t}{200}} + 1000 \\
+\frac{11000}{69000} &= e^{\frac{-t}{200}} \\
+\frac{11}{69} &= e^{\frac{-t}{200}} \\
+\text{ln} \frac{11}{69} &= \text{ln}(e^{\frac{-t}{200}}) \\
+-200 \cdot \text{ln} \frac{11}{69} &= t \\
+t &= 1168.7
+\end{align*}
 \end{problem}
 
 \end{document}
