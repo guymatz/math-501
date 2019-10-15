@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Ordinary Differential Equations\\
+Math 501, Fall 2019\\
+Homework/Quiz 1}
+\author{Guy Matz \\
+BMCC}
+\date{October 8 2019}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\begin{enumerate}
+    \item Question 1\\
+    An object of mas $m$ is hung from a beam . . .
+    \begin{enumerate}
+        \item The IVP is:\\
+        $\ddot{x} + 2 \dot{x} +5x = 0, \text{where } x(0) =2, \dot{x} = 4$
+        \item IVP's Solution is:
+        \begin{align*}
+            \ddot{x} + 2 \dot{x} +5x &= 0 \\
+            (D^2 + 2D+ 5)[x] &= 0
+        \end{align*}
+        Roots = $-1 \pm 2i$, so
+        \begin{align*}
+            x(t) &= e^{-t}(\text{A} \text{cos}(2t) + \text{B}\text{sin}(2t) )\\
+            \dot{x} &= -e^{-t}(\text{A} \text{cos}(2t) + \text{B} \text{sin}(2t) + -e^{-t}(-2\text{A} \text{sin}(2t) + 2 \text{B} \text{cos}(2t) )\\
+            x(0) = 2 &= e^0(2\text{cos}(0) + B\text{sin}(0))\\
+                     &= A \\
+            \dot{x} = 4 &= -e^0(2 \text{cos}(0) + \text{B sin}(0)) + e^0(-2\text{A sin}(0) + 2 \text{B cos}(0)) \\
+                      4 &= -2 + 3\text{B}\\
+                      2 &= \text{B}
+        \end{align*}
+    \text{IVP solution}: $x(t) = e^{-t}(2 \text{cos}(2t) + 2 \text{sin}(2t))$
+    \item At $t = .5$, the object will be located at $x(0.5)$
+    \begin{align*}
+    x(.5) &= e^{-.5}(2\text{cos}(1) + 2\text{sin}(1)) \\
+          &= .6065* (2 * 0.5403 + 2 * .8415) \\
+          &= .6065* ( 1.0806 + 1.6829) \\
+          &= 1.6761
+    \end{align*}
+    \end{enumerate}
+    
+    \item Solve the IVP $y' = -7y$, $y(0) = -4$
+    \begin{align*}
+        \frac{dy}{dt} &= -7y \\
+        \frac{dy}{y} &= -7 dt\\
+        ln(y)        &= -7t + c_1 \\
+        y            &= c_1 e^{-7t}
+    \end{align*}
+    \begin{align*}
+        y(0) &= c_1 e^{-7t} \\
+          -4 &= c_1 e^0 \\
+          -4 &= c_1
+    \end{align*}
+    $$y(t) = -4 e^{-7}$$
+    
+    \item Solve the IVP $y' = xy$, $y(\sqrt{2}) = 5e$
+    \begin{align*}
+        \frac{dy}{dx} &= xy \\
+        \frac{dy}{y} &= x dx\\
+        ln(y)        &= \frac{x^2}{2} + c_1 \\
+        y            &= c_1 e^{\frac{x^2}{2}}
+    \end{align*}
+    \begin{align*}
+        y(\sqrt{2}) &= c_1 e^{\frac{\sqrt{2}^2}{2}} \\
+          5e &= c_1 e \\
+          5  &= c_1
+    \end{align*}
+    $$y(t) = 5  e^{\frac{x^2}{2}}$$
+    
+\item Solve the IVP $x' -5x = 15e^{5t}$, $x(2) = 20 e^{10}$
+    $$x_h(x) = (D-5)[x] = 0$$
+    Roots = 5, so
+    $$x_h(x) = c_1 e^{5t}$$
+    \begin{align*}
+        x_p(x) = x_t &= \text{A} e^{5t} \text{  INTERFERENCE} \\
+                     &= \text{A} t e^{5t} \\
+         \dot{x}_p   &= Ae^{5t} + A5te^{5t} \\
+         15 e^{5t}   &= Ae^{5t} + A5te^{5t} - 5Ste^{5t} \\
+             Ae^{5t} &= 15e^{5t} \\
+                   A &= 15
+    \end{align*}
+    $$x_p(t) = 15te^{5t}$$
+    \begin{align*}
+                  x &= x_h + x_p \\
+                    &= c_1e^{5t} + 15te^{5t}\\
+    x(2) = 20e^{5t} &= c_1e^{10} + 30e^{10} \\
+        -10e^{10}   &= c_1e^{10} \\
+                -10 &= c_1 \\
+    \end{align*}
+    $$x = -10 e^{5t} + 15 t e^{5t}$$
+    
+\end{enumerate}
+\end{document}
+
