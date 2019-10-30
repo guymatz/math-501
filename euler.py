@@ -1,5 +1,6 @@
 # Written by Chris McCarthy July 2019 SIMIODE DEMARC
 # Drag = 0 Student Version 
+# Drag = 0 Student Version 
 #===========================================  for online compilers
 import matplotlib as mpl
 mpl.use('Agg')
@@ -18,6 +19,10 @@ class Ball:
         self.vx = vx
         self.vy = vy
         self.t = t
+        C_d = .5 # drag coefficient for tennis ball
+        density_of_air = 1.21 #  kg/m^3 at 20 degrees Centigrade (68◦ F) 
+	tennis_ball_radius = 0.0265 # meters;
+	self.drag = (C_d * density_air * np.pi * tennis_ball_radius**2)/2
     def update_ball(self, delta_t,g):
         self.x = self.x + delta_t*self.vx
         self.y = self.y + delta_t*self.vy
@@ -60,13 +65,15 @@ while 0 <= best_ball.y:                    # Euler Method applied to that ball
     times.append(best_ball.t)
 #============================================= 
 print(' ')
-print('Assuming drag = 0. If when you throw a tennis ball you release it at a height of', y0, 
-       ' meters and a speed of', speed, 
-       'meters/second, and you want it to land furthest from you,',
-      'you should throw the ball at an angle of', Theta[maxpos], 
-      ' degrees: it will land about', np.round(max(xDistance),1),'meters away.' )
+print(f'''
+       Assuming drag = 0. If when you throw a tennis ball you release it at
+       a height of {y0}, meters and a speed of {speed} meters/second, and
+       you want it to land furthest from you, you should throw the ball at an
+       angle of {Theta[maxpos]} degrees: it will land about
+       {np.round(max(xDistance),1)} meters away.
+''')
 #============================================= plot best trajectory
 plt.plot(xvalues, yvalues, 'r-',linewidth=7.0)
 plt.grid(linewidth='3', color='black')
-plt.title('Prof. McCarthy. Ball Trajectory. Without Drag', fontsize = 18)
+plt.title('Guy Matz. Ball Trajectory. Without Drag', fontsize = 18)
 plt.savefig('NoDragGraph.png')
