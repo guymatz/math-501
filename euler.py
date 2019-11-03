@@ -26,8 +26,10 @@ class Ball:
     def update_ball(self, delta_t,g):
         self.x = self.x + delta_t*self.vx
         self.y = self.y + delta_t*self.vy
-        self.vx = self.vx + (-self.drag) * (np.sqrt(self.x**2 + self.y**2) * self.x / m) * delta_t
-        self.vy = self.vy + (-g - self.drag) * (np.sqrt(self.x**2 + self.y**2) * self.y ) * delta_t
+        self.vx = self.vx
+        self.vy = self.vy + delta_t * (-g)
+        #self.vx = self.vx + (-self.drag) * (np.sqrt(self.x**2 + self.y**2) * self.x / m) * delta_t
+        #self.vy = self.vy + delta_t * (-g) + (-self.drag) * (np.sqrt(self.x**2 + self.y**2) * self.y / m) * delta_t
         self.t = self.t + delta_t
 #============================================ initial conditions
 x0 = 0      # initial x position in meters
@@ -64,14 +66,15 @@ while 0 <= best_ball.y:                    # Euler Method applied to that ball
     yvalues.append(best_ball.y)
     times.append(best_ball.t)
 #============================================= 
-print(' ')
-print(f'''
-       Assuming drag = {ball.drag:.5f}. If when you throw a tennis ball you release it at
-       a height of {y0}, meters and a speed of {speed} meters/second, and
-       you want it to land furthest from you, you should throw the ball at an
-       angle of {Theta[maxpos]} degrees: it will land about
-       {np.round(max(xDistance),1)} meters away.
-''')
+
+footer = (
+       f"Assuming drag = {ball.drag:.5f}. If when you throw a tennis ball you release it at "
+       f"a height of {y0}, meters and a speed of {speed} meters/second, and "
+       f"you want it to land furthest from you, you should throw the ball at an "
+       f"angle of {Theta[maxpos]} degrees: it will land about "
+       f"{np.round(max(xDistance),1)} meters away."
+)
+print(footer)
 #============================================= plot best trajectory
 plt.plot(xvalues, yvalues, 'r-',linewidth=7.0)
 plt.grid(linewidth='3', color='black')
